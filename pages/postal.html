@@ -51,8 +51,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="index.html">手机号码归属地查询</a></li>
-                <li><a href="postal.html">邮编查询</a></li>
+                <li><a href="index.html">手机号码归属地查询</a></li>
+                <li  class="active"><a href="postal.html">邮编查询</a></li>
                 <li><a href="gold.html">黄金数据查询</a></li>
             </ul>
         </div><!--/.nav-collapse -->
@@ -67,14 +67,14 @@
     </div>
     <form>
         <div class="form-group">
-            <label>需要查询的手机号码或手机号码前7位</label>
-            <input type="text" class="form-control" id="txt" placeholder="数字，必填">
+            <label>需要的邮编，如：215001</label>
+            <input type="text" class="form-control" id="postal" placeholder="数字，必填">
         </div>
         <!--<div class="form-group">-->
         <!--<label for="exampleInputPassword1">返回数据的格式,xml或json，默认json</label>-->
         <!--<input type="text" class="form-control" id="exampleInputPassword1" placeholder="选填">-->
         <!--</div>-->
-        <button type="button" class="btn btn-default" id="phone">Submit</button>
+        <button type="button" class="btn btn-default" id="p">Submit</button>
     </form>
     <div id="paragraph"></div>
 </div><!-- /.container -->

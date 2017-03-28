@@ -28,3 +28,31 @@ function showData(data){
         "<br/>卡类型："+result.card
     )}
 });
+$(function () {
+    $('#p').click(function () {
+        var postal=$("#postal").val();
+        $.ajax({
+            type: "GET",
+            url: "http://v.juhe.cn/postcode/query?postcode="+postal+"&key=578bb5fc58bf3177b8c50ec885e24e45",
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "doFunction",
+            error: function() {
+                alert("Connection error");
+            },
+            success:function(data){
+                alert("Connection success");
+                showData(data);
+            }
+        })
+    });
+    function showData(data){
+        var result=data.result;
+        $("#paragraph").html(
+            "邮编:"+result.PostNumber+
+            "<br/>省份："+result.Province+
+            "<br/>城市："+result.City+
+            "<br/>区："+result.District+
+            "<br/>地址："+result.Address
+        )}
+});
