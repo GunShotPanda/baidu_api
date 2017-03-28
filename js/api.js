@@ -1,32 +1,30 @@
 /**
  * Created by IMUDGES on 2017/3/19.
  */
-var url1= 'http://apis.juhe.cn/mobile/get?'+$phonenumber+'&dtyap'
-var url2= 'v.juhe.cn/postcode/query'
-var url3= 'web.juhe.cn/finance/gold/shgold'
-$(document).ready(function () {
+$(function () {
     $('#phone').click(function () {
-        var phoNe = {
-            phone:$("#phonenumber").val(),
-            key: '21996f07fa43b5f1cf44a2886f300f15',
-            dtype: '',
-        }
+        var phoneNumber=$("#txt").val();
         $.ajax({
-            url: url1,
-            type:'post',
-            dataType:'json',
-            async: false,
-            data:phoNe,
-            error: function(request,json) {
-                console.log(JSON.stringify(json));
-                console.log(request);
+            type: "GET",
+            url: "http://apis.juhe.cn/mobile/get?phone="+phoneNumber+"&key=21996f07fa43b5f1cf44a2886f300f15",
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "doFunction",
+            error: function() {
                 alert("Connection error");
             },
-            success:function(json){
-                console.log(JSON.stringify(json));
-                window.json_all=JSON.stringify(json);
-                var status=json.status;
+            success:function(data){
+                showData(data);
             }
         })
-    })
-})
+    });
+function showData(data){
+    var result=data.result;
+    $("#paragraph").html(
+        "省份:"+result.province+
+        "<br/>城市："+result.city+
+        "<br/>区号："+result.areacode+
+        "<br/>运营商："+result.company+
+        "<br/>卡类型："+result.card
+    )}
+});
