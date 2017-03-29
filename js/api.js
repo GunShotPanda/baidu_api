@@ -99,15 +99,28 @@ $(function () {
         })
     });
     function showData(data){
-        var result=data.result;
-        $("#paragraph").html(
-            "品种:"+result.variety+
-            "<br/>最新价："+result.latestpri+
-            "<br/>开盘价："+result.openpri+
-            "<br/>最高价："+result.maxpri+
-            "<br/>最低价："+result.minpri+
-            "<br/>更新时间："+result.time
-        )}
+        var result = data.result;
+        var output = [];
+        // $.each(data, function(key,result){
+        //     output.push('<li>' + result.variety + '</li>');
+        // });
+        console.log(result);
+        for(var index in result){
+            console.log(result[index]);
+            for(var item in result[index]){
+                console.log(result[index][item]);
+            }
+        }
+        $("#paragraph").html(output.join(''));
+        // $("#paragraph").html(
+        //     "品种:"+result.variety+
+        //     "<br/>最新价："+result.latestpri+
+        //     "<br/>开盘价："+result.openpri+
+        //     "<br/>最高价："+result.maxpri+
+        //     "<br/>最低价："+result.minpri+
+        //     "<br/>更新时间："+result.time
+        // )
+        }
 })
 // "variety":"Ag(T+D)",		/*品种*/
 //     "latestpri":"6585.00",		/*最新价*/
