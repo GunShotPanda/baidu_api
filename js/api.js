@@ -1,3 +1,4 @@
+
 /**
  * Created by IMUDGES on 2017/3/19.
  */
@@ -22,15 +23,15 @@ $(function () {
             }
         })
     });
-function showData(data){
-    var result=data.result;
-    $("#paragraph").html(
-        "省份:"+result.province+
-        "<br/>城市："+result.city+
-        "<br/>区号："+result.areacode+
-        "<br/>运营商："+result.company+
-        "<br/>卡类型："+result.card
-    )}
+    function showData(data){
+        var result=data.result;
+        $("#paragraph").html(
+            "省份:"+result.province+
+            "<br/>城市："+result.city+
+            "<br/>区号："+result.areacode+
+            "<br/>运营商："+result.company+
+            "<br/>卡类型："+result.card
+        )}
 });
 $(function () {
     $('#p').click(function () {
@@ -57,15 +58,15 @@ $(function () {
         var result=data.result.list;
         for (var i=1;i<=5;i++)
         {
-        $("#paragraph").html(
-            "邮编:" + result[i].PostNumber +
-            "<br/>省份：" + result[i].Province +
-            "<br/>城市：" + result[i].City +
-            "<br/>区：" + result[i].District +
-            "<br/>地址：" + result[i].Address
+            $("#paragraph").html(
+                "邮编:" + result[i].PostNumber +
+                "<br/>省份：" + result[i].Province +
+                "<br/>城市：" + result[i].City +
+                "<br/>区：" + result[i].District +
+                "<br/>地址：" + result[i].Address
 
-        )}
-        }
+            )}
+    }
 });
 $(function () {
     var url1="web.juhe.cn:8080/finance/gold/shgold";
@@ -84,7 +85,7 @@ $(function () {
             type: "GET",
             url: "http://localhost:3000",
             data: {
-              address:url1+"?v=&key=8cc9e642ba492d27c0dac28bdb64da8a"
+                address:url1+"?v=&key=8cc9e642ba492d27c0dac28bdb64da8a"
             },
             dataType: "json",
             // jsonp: "callback",
@@ -100,27 +101,24 @@ $(function () {
     });
     function showData(data){
         var result = data.result;
-        var output = [];
         // $.each(data, function(key,result){
         //     output.push('<li>' + result.variety + '</li>');
         // });
-        console.log(result);
         for(var index in result){
-            console.log(result[index]);
             for(var item in result[index]){
-                console.log(result[index][item]);
+                $("#paragraph").html(
+                    "品种:"+result[index][item].variety+
+                    "<br/>名称:"+result[index][item].name+
+                    "<br/>最新价："+result[index][item].latestpri+
+                    "<br/>开盘价："+result[index][item].openpri+
+                    "<br/>最高价："+result[index][item].maxpri+
+                    "<br/>最低价："+result[index][item].minpri+
+                    "<br/>更新时间："+result[index][item].time
+                )
             }
         }
-        $("#paragraph").html(output.join(''));
-        // $("#paragraph").html(
-        //     "品种:"+result.variety+
-        //     "<br/>最新价："+result.latestpri+
-        //     "<br/>开盘价："+result.openpri+
-        //     "<br/>最高价："+result.maxpri+
-        //     "<br/>最低价："+result.minpri+
-        //     "<br/>更新时间："+result.time
-        // )
-        }
+
+    }
 })
 // "variety":"Ag(T+D)",		/*品种*/
 //     "latestpri":"6585.00",		/*最新价*/
